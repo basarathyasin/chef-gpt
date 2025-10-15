@@ -4,6 +4,8 @@ export default function Main() {
 
     const[ingredients, setIngredients] = React.useState(["All the main spicies","pasta", "ground beef", "tomato paste"])
 
+    const[recipeShown, setRecipeShown] = React.useState(false)
+
     const ingredientsListItems = ingredients.map(ingredient => (
         <li className="list-item" key={ingredient}>{ingredient}</li>
     ))
@@ -11,6 +13,11 @@ export default function Main() {
     function addIngredient(formData) {
         const newIngredient = formData.get("ingredient");
         setIngredients(prev => [...prev, newIngredient]);
+    }
+
+    function getRecipe(){
+        setRecipeShown(prev => !prev)
+
     }
     
 
@@ -34,11 +41,11 @@ export default function Main() {
                         <h3>Ready for a recipe?</h3>
                         <p>Generate a recipe from your list of ingredients.</p>
                     </div>
-                    <button>Get a recipe</button>
+                    <button onClick={getRecipe}>Get a recipe</button>
                 </div> : null}
             </section> : null}
             
-            <section>
+            {recipeShown ?<section>
                 <h2>Chef Claude Recommends:</h2>
                 <article className="suggested-recipe-container" aria-live="polite">
                     <p>Based on the ingredients you have available, I would recommend making a simple a delicious <strong>Beef Bolognese Pasta</strong>. Here is the recipe:</p>
@@ -69,7 +76,7 @@ export default function Main() {
                         <li>Serve hot, garnished with additional fresh basil or grated Parmesan cheese if desired.</li>
                     </ol>
                 </article>
-            </section>
+            </section> : null}
         </main>
     )
 }
