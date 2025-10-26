@@ -11,7 +11,7 @@ export function ChefRecipe({ loading, output }) {
 
     {loading ? (
         <DotLottieReact
-        src="https://lottie.host/00fe4d66-ec58-4892-843a-f457e7c7321f/8dJS23NOhJ.lottie"c
+        src="https://lottie.host/00fe4d66-ec58-4892-843a-f457e7c7321f/8dJS23NOhJ.lottie"
         loop
         autoplay
         alt="Loading..."
